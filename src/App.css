@@ -1,20 +1,58 @@
 .App {
   min-width: auto;
   min-height: 100vh;
+  background: transparent;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+html {
   background-image: url("./assets/images/port_background.jpg");
   background-position: center;
   background-repeat: no-repeat;
+  /* overflow-y: hidden; */
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+.link:hover {
+  color: rgb(75, 161, 197);
 }
 
 .icons {
   font-size: calc(26px + (32 - 26) * (100vw - 400px) / (1200 - 400));
   cursor: pointer;
-  color: white;
+  /* color: white; */
+  color: rgb(176, 32, 73);
 }
 
-.logo-sm {
+.icons:hover {
+  color: rgb(75, 161, 197);
+  background-color: rgba(176, 32, 73, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 4px;
+}
+
+.logo-sm-container {
   margin: 3vw 0 3vw 0;
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.logo-sm {
+  height: 50px;
+  width: auto;
+}
+
+.logo-lg {
+  width: auto;
+  height: 100px;
 }

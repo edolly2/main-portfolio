@@ -1,6 +1,10 @@
+import '../assets/typography/typography.css';
+
 import { CgClose, CgMenuGridO } from 'react-icons/cg';
 import { useEffect, useState } from 'react';
 
+import { Link } from 'react-router-dom';
+import Logo from '../assets/images/logo.png';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -21,13 +25,23 @@ const TopNavList = styled.ul`
   gap: 2rem;
 `;
 
-const TopNavListItem = styled.li``;
+const TopNavListItem = styled.li`
+  padding: 0 4px;
+  :hover {
+    cursor: pointer;
+    color: rgb(75, 161, 197);
+    background-color: rgba(176, 32, 73, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 4px;
+  }
+`;
 
-const TopNavBarSm = styled.nav`
+const TopNavBarSm = styled.div`
   display: none;
   height: 100%;
-  align-items: center;
   position: relative;
+  align-items: center;
+  /* justify-content: center; */
   @media screen and (max-width: 768px) {
     display: flex;
   }
@@ -44,6 +58,11 @@ const TopNavMenuSm = styled.div`
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   align-items: center;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-right: 2px solid rgba(158, 158, 158, 0.09);
+  border-bottom: 2px solid rgba(58, 58, 58, 0.09);
+  box-shadow: 5px 20px 20px black;
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -65,8 +84,38 @@ const TopNavListItemSm = styled.li`
   margin: 0.5vw 0;
   :hover {
     cursor: pointer;
-    background-color: green;
+    color: rgb(75, 161, 197);
+    background-color: rgba(176, 32, 73, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 4px;
   }
+`;
+
+const TitleSm = styled.h1`
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  font-family: 'Monday Routines';
+  text-shadow: 2px 2px 2px black, -2px 2px 2px black, 2px -2px 2px black,
+    1px 2px 2px black, 2px 1px 2px black, -1px 2px 2px black, 2px -1px 2px black,
+    1px -2px 2px black, -2px 1px 2px black, -1px -2px 2px black,
+    -2px -1px 2px black, 1px 1px 2px black, -1px -1px 2px black,
+    -1px 1px 2px black, 1px -1px 2px black, 0px 2px 2px black, 2px 0px 2px black,
+    -2px 0px 2px black, 0px -2px 2px black, 0px 1px 2px black, 1px 0px 2px black,
+    0px -1px 2px black, -1px 0px 2px black, 0px 0px 2px black,
+    6px 6px 6px rgba(176, 32, 73, 0.5), -6px 6px 6px rgba(176, 32, 73, 0.5),
+    6px -6px 6px rgba(176, 32, 73, 0.5), 1px 6px 6px rgba(176, 32, 73, 0.5),
+    6px 1px 6px rgba(176, 32, 73, 0.5), -1px 6px 6px rgba(176, 32, 73, 0.5),
+    6px -1px 6px rgba(176, 32, 73, 0.5), 1px -6px 6px rgba(176, 32, 73, 0.5),
+    -6px 1px 6px rgba(176, 32, 73, 0.5), -1px -6px 6px rgba(176, 32, 73, 0.5),
+    -6px -1px 6px rgba(176, 32, 73, 0.5), 1px 1px 6px rgba(176, 32, 73, 0.5),
+    -1px -1px 6px rgba(176, 32, 73, 0.5), -1px 1px 6px rgba(176, 32, 73, 0.5),
+    1px -1px 6px rgba(176, 32, 73, 0.5), 0px 6px 6px rgba(176, 32, 73, 0.5),
+    6px 0px 6px rgba(176, 32, 73, 0.5), -6px 0px 6px rgba(176, 32, 73, 0.5),
+    0px -6px 6px rgba(176, 32, 73, 0.5), 0px 1px 6px rgba(176, 32, 73, 0.5),
+    1px 0px 6px rgba(176, 32, 73, 0.5), 0px -1px 6px rgba(176, 32, 73, 0.5),
+    -1px 0px 6px rgba(176, 32, 73, 0.5), 0px 0px 6px rgba(176, 32, 73, 0.5),
+    5px 5px 10px black;
 `;
 
 // <-- STYLES
@@ -88,40 +137,114 @@ const TopNav = (props) => {
       }}
     />
   );
+
+  // const windowSize = () => {
+  //   if (window.innerWidth >= 768) {
+  //     setHamMenuActive(!hamMenuActive);
+  //   }
+  // };
+  // windowSize();
   return (
     <>
       <TopNavBar>
         <TopNavList style={{ marginRight: 'auto' }}>
-          <TopNavListItem>Home</TopNavListItem>
-          <TopNavListItem>Bio</TopNavListItem>
-          <TopNavListItem>Skills</TopNavListItem>
-          <TopNavListItem>Projects</TopNavListItem>
-          <TopNavListItem>Contact</TopNavListItem>
+          <TopNavListItem>
+            <Link className='link' to='/'>
+              Home
+            </Link>
+          </TopNavListItem>
+          <TopNavListItem>
+            <Link className='link' to='/bio'>
+              Bio
+            </Link>
+          </TopNavListItem>
+          <TopNavListItem>
+            <Link className='link' to='/skills'>
+              Skills
+            </Link>
+          </TopNavListItem>
+          <TopNavListItem>
+            <Link className='link' to='/projects'>
+              Projects
+            </Link>
+          </TopNavListItem>
+          <TopNavListItem>
+            <Link className='link' to='/contact'>
+              Contact
+            </Link>
+          </TopNavListItem>
         </TopNavList>
-        <div>LOGO</div>
+        <div className='logo-lg-container'>
+          <Link className='link' to='/'>
+            <img className='logo-lg' src={Logo} alt='logo' />
+          </Link>
+        </div>
 
         <TopNavList style={{ marginLeft: 'auto' }}>
-          <TopNavListItem style={{ marginRight: '20px' }}>Blog</TopNavListItem>
-          <TopNavListItem>Resources</TopNavListItem>
+          <TopNavListItem>
+            <Link className='link' to='/blog'>
+              Blog
+            </Link>
+          </TopNavListItem>
+          <TopNavListItem>
+            <Link className='link' to='/resources'>
+              Resources
+            </Link>
+          </TopNavListItem>
+          <TopNavListItem>Website</TopNavListItem>
         </TopNavList>
       </TopNavBar>
-      <TopNavBarSm>{whichIcon}</TopNavBarSm>
+      <TopNavBarSm>
+        {whichIcon}
+        <TitleSm>Eric Dollinger</TitleSm>
+      </TopNavBarSm>
       <TopNavMenuSm
         style={{
           display: hamMenuActive ? 'flex' : 'none',
         }}
       >
-        <div className='logo-sm'>LOGO</div>
+        <div className='logo-sm-container'>
+          <img className='logo-sm' src={Logo} alt='logo' />
+        </div>
         <TopNavListSm>
-          <TopNavListItemSm>Home</TopNavListItemSm>
-          <TopNavListItemSm>Bio</TopNavListItemSm>
-          <TopNavListItemSm>Skills</TopNavListItemSm>
-          <TopNavListItemSm>Projects</TopNavListItemSm>
-          <TopNavListItemSm>Contact</TopNavListItemSm>
+          <TopNavListItemSm>
+            <Link className='link' exact to='/'>
+              Home
+            </Link>
+          </TopNavListItemSm>
+          <TopNavListItemSm>
+            <Link className='link' to='/bio'>
+              Bio
+            </Link>
+          </TopNavListItemSm>
+          <TopNavListItemSm>
+            <Link className='link' to='/skills'>
+              Skills
+            </Link>
+          </TopNavListItemSm>
+          <TopNavListItemSm>
+            <Link className='link' to='/projects'>
+              Projects
+            </Link>
+          </TopNavListItemSm>
+          <TopNavListItemSm>
+            <Link className='link' to='/contact'>
+              Contact
+            </Link>
+          </TopNavListItemSm>
         </TopNavListSm>
         <TopNavListSm>
-          <TopNavListItemSm>Blog</TopNavListItemSm>
-          <TopNavListItemSm>Resources</TopNavListItemSm>
+          <TopNavListItemSm>
+            <Link className='link' to='/blog'>
+              Blog
+            </Link>
+          </TopNavListItemSm>
+          <TopNavListItemSm>
+            <Link className='link' to='/resources'>
+              Resources
+            </Link>
+          </TopNavListItemSm>
+          <TopNavListItemSm>Website</TopNavListItemSm>
         </TopNavListSm>
       </TopNavMenuSm>
     </>
